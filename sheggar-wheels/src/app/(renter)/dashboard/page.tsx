@@ -9,7 +9,9 @@ import { Calendar, TrendingUp, Car as CarIcon } from 'lucide-react';
 
 const colors: Record<string, string> = { requested: 'bg-amber-100 text-amber-800', confirmed: 'bg-blue-100 text-blue-800', in_progress: 'bg-purple-100 text-purple-800', completed: 'bg-emerald-100 text-emerald-800', reviewed: 'bg-slate-100 text-slate-800', cancelled: 'bg-red-100 text-red-800', declined: 'bg-red-100 text-red-800', disputed: 'bg-orange-100 text-orange-800', resolved: 'bg-slate-100 text-slate-800' };
 export default function RenterDashboard() {
-  const [bookings, setBookings] = useState<any[]>([]);
+  const [bookings, setBookings] = useState<
+    ReturnType<typeof getMyBookings>
+    >([]);
   useEffect(() => { setBookings(getMyBookings()); }, []);
   const upcoming = bookings.filter((b) => ['requested', 'confirmed', 'in_progress'].includes(b.status));
   const completed = bookings.filter((b) => ['completed', 'reviewed'].includes(b.status));
@@ -28,7 +30,7 @@ export default function RenterDashboard() {
     </div>
     <h2 className="font-bold text-lg mb-4">Recent Bookings</h2>
     {bookings.length === 0 ? <div className="bg-white border rounded-2xl p-12 text-center">
-      <p className="text-slate-500 mb-4">You haven't booked any cars yet.</p>
+      <p className="text-slate-500 mb-4">You haven&apos;t booked any cars yet.</p>
       <Link href="/cars">
         <Button className="bg-blue-900">Browse Cars</Button>
       </Link>

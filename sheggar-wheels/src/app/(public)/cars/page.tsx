@@ -45,7 +45,8 @@ function CarsContent() {
     return result;
   }, [cars, params]);
 
-  const handleSort = (value: string) => {
+  const handleSort = (value: string | null) => {
+    if (!value) return;
     const newParams = new URLSearchParams(params.toString());
     newParams.set('sort', value);
     router.push('/cars?' + newParams.toString());

@@ -7,7 +7,9 @@ import { Badge } from '@/components/ui/badge';
 
 const colors: Record<string, string> = { requested: 'bg-amber-100 text-amber-800', confirmed: 'bg-blue-100 text-blue-800', in_progress: 'bg-purple-100 text-purple-800', completed: 'bg-emerald-100 text-emerald-800', reviewed: 'bg-slate-100 text-slate-800', cancelled: 'bg-red-100 text-red-800', declined: 'bg-red-100 text-red-800', disputed: 'bg-orange-100 text-orange-800', resolved: 'bg-slate-100 text-slate-800' };
 export default function BookingsList() {
-  const [bookings, setBookings] = useState<any[]>([]);
+  const [bookings, setBookings] = useState<
+    ReturnType<typeof getMyBookings>
+    >([]);
   useEffect(() => { setBookings(getMyBookings()); }, []);
   return <div className="max-w-6xl">
     <h1 className="text-2xl font-bold mb-6">My Bookings</h1>

@@ -37,7 +37,9 @@ export default function CarFilters() {
         <Label className="text-xs font-semibold text-slate-500 uppercase">Neighbourhood</Label>
 
         <Select value={params.get('neighbourhood') || 'all'}
-          onValueChange={(v) => updateParam('neighbourhood', v)}>
+          onValueChange={(v) => {if (v !== null) {
+                    updateParam('neighbourhood', v);}
+                    }}>
 
           <SelectTrigger className="mt-1">
             <SelectValue />
@@ -61,7 +63,9 @@ export default function CarFilters() {
         <Label className="text-xs font-semibold text-slate-500 uppercase">Transmission</Label>
 
         <Select value={params.get('transmission') || 'all'}
-          onValueChange={(v) => updateParam('transmission', v)}>
+          onValueChange={(v) => {if (v !== null) {
+                      updateParam('transmission', v);}
+                  }}>
 
           <SelectTrigger className="mt-1">
             <SelectValue />
